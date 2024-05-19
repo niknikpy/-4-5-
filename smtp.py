@@ -37,8 +37,7 @@ def send_MSG(socket, data, attachments = []):
         print("Код 250 от сервера не получен")
         exit()
 
-filepath = "security/"
-with open("security/email.txt", 'r') as f:
+with open("email.txt", 'r') as f:
     data = f.read().split(" ")
     emailUser = data[0]
     emailPass = f"{data[1]} {data[2]} {data[3]} {data[4]}"
@@ -72,7 +71,7 @@ while True:
     data = input("Введите название файла или 'q' если больше файлов нет: ")
     if data == "q":
         break
-    attachments.append(filepath+data)
+    attachments.append(data)
     
 send_MSG(sslClientSocket, msg, attachments)
 # Отправляем команду QUIT, получаем ответ сервера
